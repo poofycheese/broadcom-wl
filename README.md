@@ -16,7 +16,7 @@ returned this output:
     Memory at f6cXX000 (64-bit, non-prefetchable) [size=16K]
 	 
 
-I created an **install.sh** bash script to speed up the steps. It used sudo to *make*, *make install*, and then load the kernel module. Next it adds it to **dkms**, hopefully this allows it to reloaded with Clear Linux updates the kernel automatically or us:
+I created an **install.sh** bash script to speed up the steps. It used sudo to *make*, *make install*, and then load the kernel module. Next it adds it to **dkms**, hopefully this allows it to reloaded when Clear Linux updates the kernel automatically or when using:
 
 `swupd update`
 
