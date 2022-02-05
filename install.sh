@@ -1,5 +1,10 @@
 #!/bin/bash
-echo "Making broadcom-wl.  Sudo Login..."
+
+MODULE=broadcom-wl
+MODULE_VERSION=6.30.223.271
+
+
+echo "Making $MODULE $MODULE_VERSION.  Sudo Login..."
 sudo make clean
 sudo make
 
@@ -10,9 +15,10 @@ echo "Loading kernal module"
 sudo depmod -A
 sudo modprobe wl
 
-echo "Reset DKMS to rebuild"
-sudo dkms remove --all broadcom-wl/6.30.223.271
-sudo dkms add broadcom-wl/6.30.223.271
+echo "Set DKMS to rebuild with new kernals"
+sudo dkms remove --all $MODULE/$MODULE_VERSION
+sudo dkms build .
+sudo dkms install $MODULE/$MODULE_VERSION
 sudo dkms status
 
 echo "Make Clean"
